@@ -17,12 +17,17 @@ import { HERITAGE_TYPES } from "../utils/constants";
 import AIAnalysisBlock from "../components/AIAnalysisBlock";
 import ProcessingStatus from "../components/ProcessingStatus";
 import HeritageCard from "../components/HeritageCard";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslations } from "../locales/translations";
+import TranslatedText from "../components/TranslatedText";
 
 const iconMap = { Music: MusicIcon, BookOpen, Users, Palette };
 
 export default function DetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { currentLanguage } = useLanguage();
+  const t = useTranslations(currentLanguage);
   const [item, setItem] = useState(null);
   const [relatedItems, setRelatedItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,14 +78,14 @@ export default function DetailPage() {
   const copyTranscription = () => {
     if (item?.transcription) {
       navigator.clipboard.writeText(item.transcription);
-      alert("Транскрипция скопирована в буфер обмена");
+      alert(t("transcriptionCopied"));
     }
   };
 
   const shareItem = () => {
     const url = window.location.href;
     navigator.clipboard.writeText(url);
-    alert("Ссылка скопирована в буфер обмена");
+    alert(t("linkCopied"));
   };
 
   if (loading) {
@@ -95,9 +100,9 @@ export default function DetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-gray-600 mb-4">Элемент не найден</p>
+          <p className="text-xl text-gray-600 mb-4">{t("itemNotFound")}</p>
           <Link to="/catalog" className="text-primary hover:underline">
-            Вернуться к каталогу
+            {t("backToCatalog")}
           </Link>
         </div>
       </div>
@@ -117,19 +122,19 @@ export default function DetailPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <button
           onClick={() => navigate("/catalog")}
           className="flex items-center text-primary hover:text-primary/80 mb-6"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Назад к каталогу
+          {t("backToCatalog")}
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="xl:col-span-3 space-y-6">
             {/* Header */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-start justify-between mb-4">
@@ -141,16 +146,19 @@ export default function DetailPage() {
                     <span className="text-sm font-medium text-primary">
                       {typeInfo?.label_ru}
                     </span>
-                    <h1 className="text-3xl font-bold text-gray-900 mt-1">
-                      {item.title}
-                    </h1>
+                    <TranslatedText
+                      text={item.title}
+                      sourceLang="ru"
+                      as="h1"
+                      className="text-3xl font-bold text-gray-900 mt-1"
+                    />
                   </div>
                 </div>
 
                 <button
                   onClick={shareItem}
                   className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                  title="Поделиться"
+                  title={t("share")}
                 >
                   <Share2 className="h-5 w-5 text-gray-600" />
                 </button>
@@ -168,7 +176,9 @@ export default function DetailPage() {
                 </div>
                 <div className="flex items-center">
                   <Eye className="h-4 w-4 mr-1" />
-                  <span>{item.views_count || 0} просмотров</span>
+                  <span>
+                    {item.views_count || 0} {t("views")}
+                  </span>
                 </div>
               </div>
 
@@ -191,21 +201,26 @@ export default function DetailPage() {
             {item.description && (
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <h2 className="text-xl font-bold text-gray-900 mb-3">
-                  Описание
+                  {t("description")}
                 </h2>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                  {item.description}
-                </p>
+                <TranslatedText
+                  text={item.description}
+                  sourceLang="ru"
+                  as="p"
+                  className="text-gray-700 leading-relaxed whitespace-pre-wrap"
+                />
               </div>
             )}
 
             {/* Audio Player */}
             {item.audio_url && (
               <div className="bg-white rounded-xl shadow-lg p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Аудио</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("audio")}
+                </h2>
                 <audio controls className="w-full">
                   <source src={item.audio_url} />
-                  Ваш браузер не поддерживает аудио элемент.
+                  {t("browserNotSupport")} {t("audioElement")}.
                 </audio>
               </div>
             )}
@@ -213,10 +228,12 @@ export default function DetailPage() {
             {/* Video Player */}
             {item.video_url && (
               <div className="bg-white rounded-xl shadow-lg p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Видео</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("video")}
+                </h2>
                 <video controls className="w-full rounded-lg">
                   <source src={item.video_url} />
-                  Ваш браузер не поддерживает видео элемент.
+                  {t("browserNotSupport")} {t("videoElement")}.
                 </video>
               </div>
             )}
@@ -225,7 +242,7 @@ export default function DetailPage() {
             {item.images && item.images.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <h2 className="text-xl font-bold text-gray-900 mb-3">
-                  Изображения
+                  {t("images")}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {item.images.map((img, idx) => (
@@ -245,20 +262,23 @@ export default function DetailPage() {
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="text-xl font-bold text-gray-900">
-                    Транскрипция
+                    {t("transcription")}
                   </h2>
                   <button
                     onClick={copyTranscription}
                     className="flex items-center text-sm text-primary hover:text-primary/80"
                   >
                     <Copy className="h-4 w-4 mr-1" />
-                    Скопировать
+                    {t("copy")}
                   </button>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                    {item.transcription}
-                  </p>
+                  <TranslatedText
+                    text={item.transcription}
+                    sourceLang="ru"
+                    as="p"
+                    className="text-gray-700 leading-relaxed whitespace-pre-wrap"
+                  />
                 </div>
               </div>
             )}
@@ -279,7 +299,7 @@ export default function DetailPage() {
             {relatedItems.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <h2 className="text-xl font-bold text-gray-900 mb-4">
-                  Похожее наследие
+                  {t("relatedHeritage")}
                 </h2>
                 <div className="space-y-4">
                   {relatedItems.map((relatedItem) => (

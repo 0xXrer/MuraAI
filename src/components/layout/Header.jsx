@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { useTranslations } from "../../locales/translations";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const t = useTranslations(currentLanguage);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 shadow-md">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -23,20 +28,21 @@ export default function Header() {
               to="/"
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              Главная
+              {t("home")}
             </Link>
             <Link
               to="/catalog"
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              Каталог
+              {t("catalog")}
             </Link>
             <Link
               to="/upload"
               className="bg-gradient-to-r from-primary to-secondary text-black px-6 py-2 rounded-lg hover:opacity-90 transition-opacity font-medium"
             >
-              Добавить наследие
+              {t("addHeritage")}
             </Link>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -60,22 +66,25 @@ export default function Header() {
               className="block text-gray-700 hover:text-primary transition-colors font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Главная
+              {t("home")}
             </Link>
             <Link
               to="/catalog"
               className="block text-gray-700 hover:text-primary transition-colors font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Каталог
+              {t("catalog")}
             </Link>
             <Link
               to="/upload"
               className="block bg-gradient-to-r from-primary to-secondary text-black px-6 py-2 rounded-lg hover:opacity-90 transition-opacity font-medium text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Добавить наследие
+              {t("addHeritage")}
             </Link>
+            <div className="pt-3 border-t border-gray-200">
+              <LanguageSwitcher />
+            </div>
           </div>
         )}
       </nav>
