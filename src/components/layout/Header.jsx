@@ -16,7 +16,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Sparkles className="h-8 w-8 text-primary" />
+            <img src="/logo.svg" alt="MuraAI Logo" className="h-10 w-auto" />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               MuraAI
             </span>
