@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MuraAI - QR Коды</title>
+        <script src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+                    "Inter", sans-serif;
+                background: #0a0e1a;
+                color: #fff;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100vw;
+                background-image: url("glass-animation.mp4");
+            }
+
+            .video-background {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: 0;
+                background-image: url("glass-animation.mp4");
+            }
+
+            .video-background video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.3;
+            }
+
+            .video-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    135deg,
+                    rgba(10, 14, 26, 0.92) 0%,
+                    rgba(15, 25, 50, 0.95) 100%
+                );
+                z-index: 1;
+            }
+
+            .container {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                gap: 100px;
+                align-items: center;
+                justify-content: center;
+                padding: 40px;
+            }
+
+            .qr-card {
+                background: transparent;
+                padding: 0;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            .qr-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .qr-code {
+                background: white;
+                padding: 20px;
+                border-radius: 20px;
+                margin-bottom: 20px;
+                display: inline-block;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                transition: box-shadow 0.3s ease;
+            }
+
+            .qr-card:hover .qr-code {
+                box-shadow: 0 12px 32px rgba(74, 144, 226, 0.3);
+            }
+
+            .qr-code canvas,
+            .qr-code img,
+            .qr-code svg {
+                border-radius: 8px;
+                display: block;
+            }
+
+            .qr-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #ffffff;
+                margin-bottom: 6px;
+                letter-spacing: -0.3px;
+            }
+
+            .qr-url {
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.7);
+                font-weight: 400;
+                letter-spacing: 0.2px;
+            }
+
+            .logo {
+                position: fixed;
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 100;
+                font-size: 3rem;
+                font-weight: 700;
+                color: #ffffff;
+                letter-spacing: 3px;
+                text-shadow: 0 4px 20px rgba(74, 144, 226, 0.4);
+            }
+
+            @media (max-width: 1024px) {
+                .container {
+                    flex-direction: column;
+                    gap: 50px;
+                    padding: 40px 20px;
+                }
+
+                .qr-card {
+                    padding: 30px;
+                }
+
+                .qr-title {
+                    font-size: 1.5rem;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .logo {
+                    font-size: 2rem;
+                    top: 30px;
+                }
+
+                .qr-card {
+                    padding: 25px;
+                    max-width: 90%;
+                }
+
+                .qr-code {
+                    padding: 15px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--<div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="glass-animation.mp4" type="video/mp4" />
+            </video>
+            <div class="video-overlay"></div>
+        </div>-->
+
+        <div class="logo">MuraAI</div>
+
+        <div class="container">
+            <!-- QR Code 1: Website -->
+            <div class="qr-card">
+                <div class="qr-code" id="qrcode1"></div>
+                <h2 class="qr-title">MuraAI Платформа</h2>
+                <p class="qr-url">muraai.xrer.space</p>
+            </div>
+
+            <!-- QR Code 2: Survey -->
+            <div class="qr-card">
+                <div class="qr-code" id="qrcode2"></div>
+                <h2 class="qr-title">Опрос</h2>
+                <p class="qr-url">forms.gle/survey</p>
+            </div>
+        </div>
+
+        <script>
+            // Generate QR Code 1 - Website with rounded corners
+            const qrCode1 = new QRCodeStyling({
+                width: 240,
+                height: 240,
+                type: "svg",
+                data: "https://muraai.xrer.space",
+                dotsOptions: {
+                    color: "#0a0e1a",
+                    type: "rounded",
+                },
+                cornersSquareOptions: {
+                    color: "#4a90e2",
+                    type: "extra-rounded",
+                },
+                cornersDotOptions: {
+                    color: "#4a90e2",
+                    type: "dot",
+                },
+                backgroundOptions: {
+                    color: "#ffffff",
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 0,
+                },
+            });
+
+            qrCode1.append(document.getElementById("qrcode1"));
+
+            // Generate QR Code 2 - Survey with rounded corners
+            const qrCode2 = new QRCodeStyling({
+                width: 240,
+                height: 240,
+                type: "svg",
+                data: "https://forms.gle/your-survey-link-here", // Замените на настоящий URL опросника
+                dotsOptions: {
+                    color: "#0a0e1a",
+                    type: "rounded",
+                },
+                cornersSquareOptions: {
+                    color: "#4a90e2",
+                    type: "extra-rounded",
+                },
+                cornersDotOptions: {
+                    color: "#4a90e2",
+                    type: "dot",
+                },
+                backgroundOptions: {
+                    color: "#ffffff",
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 0,
+                },
+            });
+
+            qrCode2.append(document.getElementById("qrcode2"));
+        </script>
+    </body>
+</html>
