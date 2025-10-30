@@ -1,17 +1,44 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useTranslations } from "../../locales/translations";
 import LanguageSwitcher from "../LanguageSwitcher";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const { currentLanguage } = useLanguage();
   const t = useTranslations(currentLanguage);
 
+  useEffect(() => {
+    const controlHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show header when scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 10) {
+        setIsVisible(true);
+      }
+      // Hide header when scrolling down and past a threshold
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+        setMobileMenuOpen(false); // Close mobile menu when hiding
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", controlHeader);
+    return () => window.removeEventListener("scroll", controlHeader);
+  }, [lastScrollY]);
+
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 shadow-md">
+    <header
+      className={`sticky top-0 z-50 backdrop-blur-md bg-white/70 shadow-md transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
