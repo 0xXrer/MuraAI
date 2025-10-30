@@ -1,0 +1,21 @@
+{
+  "name": "MuraAI - Preserving Cultural Heritage",
+  "short_name": "MuraAI",
+  "description": "AI-powered platform for preserving and exploring cultural heritage",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}

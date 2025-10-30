@@ -88,7 +88,7 @@ export default function CatalogPage() {
           </h1>
 
           {/* Search Bar */}
-          <div className="flex gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
@@ -102,41 +102,67 @@ export default function CatalogPage() {
             </div>
             <button
               onClick={handleSearch}
-              className="px-6 py-3 bg-primary text-black rounded-lg hover:bg-primary/90 transition-colors"
+              className="px-6 py-3 bg-primary text-black rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap"
             >
               Искать
             </button>
           </div>
 
           {/* Filters and View Mode */}
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-4">
-              <Filter className="h-5 w-5 text-gray-600" />
-
-              {/* Type Filters */}
-              <div className="flex flex-wrap gap-2">
-                {HERITAGE_TYPES.map((type) => (
-                  <button
-                    key={type.value}
-                    onClick={() => handleTypeFilter(type.value)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      filters.type.includes(type.value)
-                        ? "bg-primary text-black"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
-                    {type.label_ru}
-                  </button>
-                ))}
+          <div className="flex flex-col gap-4">
+            {/* Filter Header with View Mode Toggle */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Filter className="h-5 w-5 text-gray-600" />
+                <span className="text-sm font-medium text-gray-700">
+                  Фильтры
+                </span>
               </div>
 
-              {/* Region Filter */}
+              {/* View Mode Toggle */}
+              <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 rounded ${viewMode === "grid" ? "bg-white shadow-sm" : ""}`}
+                  aria-label="Grid view"
+                >
+                  <Grid className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-2 rounded ${viewMode === "list" ? "bg-white shadow-sm" : ""}`}
+                  aria-label="List view"
+                >
+                  <List className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Type Filters */}
+            <div className="flex flex-wrap gap-2">
+              {HERITAGE_TYPES.map((type) => (
+                <button
+                  key={type.value}
+                  onClick={() => handleTypeFilter(type.value)}
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    filters.type.includes(type.value)
+                      ? "bg-primary text-black"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {type.label_ru}
+                </button>
+              ))}
+            </div>
+
+            {/* Region Filter and Clear Button */}
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
               <select
                 value={filters.region}
                 onChange={(e) =>
                   setFilters({ ...filters, region: e.target.value })
                 }
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
               >
                 <option value="">Все регионы</option>
                 {REGIONS.map((region) => (
@@ -149,27 +175,11 @@ export default function CatalogPage() {
               {(filters.type.length > 0 || filters.region || searchQuery) && (
                 <button
                   onClick={clearFilters}
-                  className="text-sm text-primary hover:text-primary/80"
+                  className="px-4 py-2 text-sm text-primary hover:text-primary/80 font-medium underline"
                 >
                   Сбросить фильтры
                 </button>
               )}
-            </div>
-
-            {/* View Mode Toggle */}
-            <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
-              <button
-                onClick={() => setViewMode("grid")}
-                className={`p-2 rounded ${viewMode === "grid" ? "bg-white shadow-sm" : ""}`}
-              >
-                <Grid className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => setViewMode("list")}
-                className={`p-2 rounded ${viewMode === "list" ? "bg-white shadow-sm" : ""}`}
-              >
-                <List className="h-5 w-5" />
-              </button>
             </div>
           </div>
         </div>

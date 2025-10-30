@@ -78,32 +78,46 @@ export default function HomePage() {
 
         {/* Glass Content Container */}
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center max-w-3xl mx-auto backdrop-blur-xl bg-white/10 rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
-                <Sparkles className="h-16 w-16 text-white drop-shadow-lg" />
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 items-center">
+            {/* Left Content */}
+            <div className="text-center lg:text-left backdrop-blur-xl bg-white/10 rounded-3xl p-6 md:p-12 shadow-2xl border border-white/20 w-full">
+              <div className="flex justify-center lg:justify-start mb-4 md:mb-6">
+                <div className="p-3 md:p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
+                  <Sparkles className="h-12 w-12 md:h-16 md:w-16 text-white drop-shadow-lg" />
+                </div>
+              </div>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">
+                {t("heroTitle")}
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/95 drop-shadow-md">
+                {t("heroDescription")}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+                <Link
+                  to="/upload"
+                  className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform text-sm md:text-base"
+                >
+                  {t("addHeritage")}
+                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+                </Link>
+                <Link
+                  to="/catalog"
+                  className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white/20 backdrop-blur-md text-white rounded-xl font-semibold hover:bg-white/30 transition-all border-2 border-white/40 hover:scale-105 transform shadow-lg text-sm md:text-base"
+                >
+                  {t("exploreCatalog")}
+                </Link>
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-              {t("heroTitle")}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/95 drop-shadow-md">
-              {t("heroDescription")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/upload"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform"
-              >
-                {t("addHeritage")}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                to="/catalog"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-xl font-semibold hover:bg-white/30 transition-all border-2 border-white/40 hover:scale-105 transform shadow-lg"
-              >
-                {t("exploreCatalog")}
-              </Link>
+
+            {/* Phone Mockup - Hidden on mobile, visible on tablet+ */}
+            <div className="hidden md:flex justify-center items-center w-full">
+              <div className="relative animate-float w-64 lg:w-full lg:max-w-md">
+                <img
+                  src="/phone-mockup.png"
+                  alt="MuraAI Mobile App"
+                  className="w-full drop-shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>
