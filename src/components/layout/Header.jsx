@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 backdrop-blur-md bg-white/70 shadow-md transition-transform duration-300 ${
+      className={`sticky top-0 z-50 backdrop-blur-md bg-white shadow-md transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
