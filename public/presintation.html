@@ -19,6 +19,7 @@
                 background: #0a0e1a;
                 color: #4a90e2;
                 overflow: hidden;
+                background-image: url("glass-animation.mp4");
             }
 
             .presentation {
@@ -40,7 +41,6 @@
                 align-items: center;
                 justify-content: center;
                 will-change: opacity;
-                background-image: url("glass-animation.mp4");
             }
 
             .slide.active {
@@ -49,7 +49,6 @@
                 z-index: 1;
             }
 
-            /* Video Background - Shared */
             .video-background {
                 position: fixed;
                 top: 0;
@@ -73,49 +72,37 @@
                 z-index: 1;
             }
 
-            .slide.with-video.active ~ .video-background video {
-                opacity: 0.25;
-            }
-
             .video-overlay {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(
-                    135deg,
-                    rgba(10, 14, 26, 0.92) 0%,
-                    rgba(15, 25, 50, 0.95) 100%
-                );
                 pointer-events: none;
                 z-index: 2;
             }
 
             .slide-content {
-                max-width: 1100px;
-                padding: 80px;
+                max-width: 1200px;
+                padding: 60px 80px;
                 position: relative;
                 z-index: 2;
                 will-change: opacity, transform;
             }
 
-            /* Typography */
             h1 {
                 font-size: 5rem;
                 font-weight: 700;
                 margin-bottom: 30px;
                 color: #4a90e2;
                 line-height: 1.1;
-                letter-spacing: -1px;
             }
 
             h2 {
-                font-size: 3.2rem;
+                font-size: 3rem;
                 font-weight: 600;
-                margin-bottom: 50px;
+                margin-bottom: 40px;
                 color: #4a90e2;
-                letter-spacing: -0.5px;
             }
 
             h3 {
@@ -126,9 +113,9 @@
             }
 
             p {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
                 line-height: 1.7;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
                 color: #ffffff;
                 font-weight: 300;
             }
@@ -141,128 +128,78 @@
                 opacity: 0.9;
             }
 
-            .accent {
-                color: #4a90e2;
-                font-weight: 500;
-            }
-
-            /* Lists */
             .feature-list {
                 list-style: none;
-                margin: 50px 0;
+                margin: 30px 0;
             }
 
             .feature-list li {
-                font-size: 1.3rem;
-                padding: 25px 35px;
-                margin: 20px 0;
+                font-size: 1.2rem;
+                padding: 20px 30px;
+                margin: 15px 0;
                 background: rgba(20, 30, 50, 0.6);
-                -webkit-backdrop-filter: blur(80px) saturate(180%);
                 backdrop-filter: blur(80px) saturate(180%);
                 border-left: 3px solid #4a90e2;
                 border-radius: 4px;
-                transition:
-                    background 0.3s ease,
-                    transform 0.3s ease,
-                    backdrop-filter 0.3s ease;
+                transition: all 0.3s ease;
                 font-weight: 300;
                 color: #ffffff;
-                will-change: transform;
             }
 
             .feature-list li:hover {
                 background: rgba(74, 144, 226, 0.25);
-                -webkit-backdrop-filter: blur(25px) saturate(180%);
-                backdrop-filter: blur(25px) saturate(180%);
                 transform: translateX(5px);
             }
 
-            .emoji {
-                margin-right: 15px;
-                opacity: 0.9;
-            }
-
-            /* Lucide Icon Styles */
-            .icon {
-                width: 18px;
-                height: 18px;
-                margin-right: 10px;
-                vertical-align: middle;
-                display: inline-block;
-                color: #4a90e2;
-                stroke-width: 2;
-            }
-
-            .feature-list .icon {
-                width: 20px;
-                height: 20px;
-            }
-
-            h3 .icon {
-                width: 22px;
-                height: 22px;
-                margin-right: 10px;
-                vertical-align: middle;
-            }
-
-            .stat .icon {
-                width: 36px;
-                height: 36px;
-                color: #4a90e2;
-            }
-
-            /* Grid Layout */
             .grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-                margin: 50px 0;
+                gap: 25px;
+                margin: 40px 0;
+            }
+
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+                margin: 40px 0;
             }
 
             .grid-item {
                 background: rgba(20, 30, 50, 0.6);
-                -webkit-backdrop-filter: blur(80px) saturate(180%);
                 backdrop-filter: blur(80px) saturate(180%);
-                padding: 35px;
+                padding: 30px;
                 border-radius: 6px;
                 border: 1px solid rgba(74, 144, 226, 0.2);
-                transition:
-                    background 0.3s ease,
-                    border-color 0.3s ease,
-                    transform 0.3s ease,
-                    backdrop-filter 0.3s ease;
-                will-change: transform;
+                transition: all 0.3s ease;
             }
 
             .grid-item:hover {
                 background: rgba(74, 144, 226, 0.25);
-                -webkit-backdrop-filter: blur(25px) saturate(180%);
-                backdrop-filter: blur(25px) saturate(180%);
                 border-color: #4a90e2;
                 transform: translateY(-3px);
             }
 
             .grid-item h3 {
-                margin-bottom: 12px;
+                margin-bottom: 10px;
             }
 
             .grid-item p {
-                font-size: 1.05rem;
+                font-size: 1rem;
                 color: #ffffff;
+                margin: 0;
             }
 
-            /* Stats */
             .stats {
                 display: flex;
                 justify-content: space-around;
-                margin: 70px 0;
+                margin: 50px 0;
                 gap: 30px;
             }
 
             .stat {
                 text-align: center;
                 background: rgba(20, 30, 50, 0.6);
-                -webkit-backdrop-filter: blur(80px) saturate(180%);
                 backdrop-filter: blur(80px) saturate(180%);
                 padding: 30px 40px;
                 border-radius: 12px;
@@ -273,109 +210,53 @@
 
             .stat:hover {
                 background: rgba(74, 144, 226, 0.25);
-                -webkit-backdrop-filter: blur(25px) saturate(180%);
-                backdrop-filter: blur(25px) saturate(180%);
                 border-color: #4a90e2;
                 transform: translateY(-3px);
             }
 
             .stat-number {
-                font-size: 4.5rem;
+                font-size: 3.5rem;
                 font-weight: 700;
                 color: #4a90e2;
                 display: block;
                 margin-bottom: 10px;
-                letter-spacing: -2px;
             }
 
             .stat-label {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 color: #ffffff;
                 text-transform: uppercase;
-                letter-spacing: 2px;
+                letter-spacing: 1.5px;
                 font-weight: 400;
             }
 
-            /* Timeline */
-            .timeline {
-                margin: 50px 0;
-                position: relative;
-                padding-left: 0;
-            }
-
-            .timeline::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                width: 2px;
-                background: rgba(74, 144, 226, 0.3);
-            }
-
-            .timeline-item {
-                margin: 0 0 35px 0;
-                padding-left: 40px;
-                position: relative;
-            }
-
-            .timeline-item:last-child {
-                margin-bottom: 0;
-            }
-
-            .timeline-item::before {
-                content: "";
-                position: absolute;
-                left: -5px;
-                top: 5px;
-                width: 12px;
-                height: 12px;
-                background: #4a90e2;
-                border-radius: 50%;
-                border: 2px solid #0a0e1a;
-                z-index: 1;
-            }
-
-            .timeline-item h3 {
-                font-size: 1.4rem;
-                margin-bottom: 10px;
-            }
-
-            .timeline-item p {
-                font-size: 1.1rem;
-                line-height: 1.8;
-            }
-
-            /* CTA */
-            .cta-container {
-                text-align: center;
-                margin-top: 70px;
-            }
-
-            .cta-button {
+            .icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                vertical-align: middle;
                 display: inline-block;
-                padding: 18px 45px;
-                background: #4a90e2;
-                color: #fff;
-                font-size: 1.2rem;
-                font-weight: 500;
-                text-decoration: none;
-                border-radius: 6px;
-                transition:
-                    background 0.3s ease,
-                    transform 0.3s ease,
-                    box-shadow 0.3s ease;
-                letter-spacing: 0.5px;
-                will-change: transform;
+                color: #4a90e2;
+                stroke-width: 2;
             }
 
-            .cta-button:hover {
-                background: #357abd;
-                transform: translateY(-2px);
-                box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+            h3 .icon {
+                width: 24px;
+                height: 24px;
             }
 
-            /* Navigation */
+            .big-number {
+                font-size: 7rem;
+                font-weight: 700;
+                color: #4a90e2;
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
             .navigation {
                 position: fixed;
                 bottom: 30px;
@@ -383,7 +264,7 @@
                 transform: translateX(-50%);
                 z-index: 100;
                 display: flex;
-                gap: 10px;
+                gap: 8px;
             }
 
             .nav-dot {
@@ -401,11 +282,6 @@
                 border-radius: 4px;
             }
 
-            .nav-dot:hover {
-                background: #4a90e2;
-            }
-
-            /* Counter */
             .slide-counter {
                 position: fixed;
                 top: 30px;
@@ -416,7 +292,6 @@
                 font-weight: 300;
             }
 
-            /* Logo */
             .logo {
                 position: fixed;
                 top: 30px;
@@ -425,222 +300,145 @@
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: #4a90e2;
-                letter-spacing: 1px;
             }
 
-            /* Big Number */
-            .big-number {
-                font-size: 9rem;
-                font-weight: 700;
-                color: #4a90e2;
-                text-align: center;
-                margin: 30px 0;
-                letter-spacing: -5px;
-                opacity: 0.9;
+            .instructions {
+                position: fixed;
+                bottom: 30px;
+                right: 40px;
+                z-index: 100;
+                font-size: 0.85rem;
+                color: #576574;
             }
 
-            /* Slide-specific adjustments */
-            [data-slide="2"] .slide-content {
-                padding: 60px 80px;
-            }
-
-            [data-slide="2"] h2 {
-                font-size: 2.8rem;
-                margin-bottom: 30px;
-            }
-
-            [data-slide="2"] .big-number {
-                font-size: 7rem;
-                margin: 20px 0;
-            }
-
-            [data-slide="2"] .feature-list {
-                margin: 30px 0;
-            }
-
-            [data-slide="2"] .feature-list li {
-                font-size: 1.15rem;
-                padding: 18px 30px;
-                margin: 15px 0;
-            }
-
-            /* Slide 4 & 7 - Timeline adjustments */
-            [data-slide="4"] .slide-content,
-            [data-slide="7"] .slide-content {
-                padding: 60px 80px;
-            }
-
-            [data-slide="4"] .timeline,
-            [data-slide="7"] .timeline {
-                margin: 40px 0 20px 20px;
-            }
-
-            [data-slide="4"] .timeline-item,
-            [data-slide="7"] .timeline-item {
-                margin-bottom: 30px;
-            }
-
-            [data-slide="4"] .timeline-item:last-child,
-            [data-slide="7"] .timeline-item:last-child {
-                margin-bottom: 0;
-            }
-
-            /* Slide 5 - Results redesign */
-            [data-slide="5"] .slide-content {
-                padding: 50px 80px;
-            }
-
-            [data-slide="5"] h2 {
-                font-size: 2.8rem;
-                margin-bottom: 30px;
-                text-align: center;
-            }
-
-            [data-slide="5"] .stats {
-                margin: 30px 0;
-            }
-
-            [data-slide="5"] .stat-number {
-                font-size: 3.5rem;
-            }
-
-            [data-slide="5"] .results-grid {
+            .team-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-                margin: 30px 0;
+                gap: 30px;
+                margin: 50px 0;
             }
 
-            [data-slide="5"] .result-card {
+            .team-member {
                 background: rgba(20, 30, 50, 0.6);
-                -webkit-backdrop-filter: blur(80px) saturate(180%);
                 backdrop-filter: blur(80px) saturate(180%);
-                padding: 20px 25px;
+                padding: 35px;
                 border-radius: 10px;
-                border-left: 3px solid #4a90e2;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                transition: all 0.3s ease;
-            }
-
-            [data-slide="5"] .result-card:hover {
-                background: rgba(74, 144, 226, 0.25);
-                -webkit-backdrop-filter: blur(25px) saturate(180%);
-                backdrop-filter: blur(25px) saturate(180%);
-                transform: translateX(5px);
-            }
-
-            [data-slide="5"] .result-card .icon {
-                width: 24px;
-                height: 24px;
-                flex-shrink: 0;
-            }
-
-            [data-slide="5"] .result-card p {
-                margin: 0;
-                font-size: 1.1rem;
-            }
-
-            [data-slide="5"] .cta-container {
-                margin-top: 35px;
-            }
-
-            /* Slide 8 - Status redesign */
-            [data-slide="8"] .slide-content {
-                padding: 50px 80px;
-                max-width: 1200px;
-            }
-
-            [data-slide="8"] h2 {
-                font-size: 3rem;
-                margin-bottom: 40px;
-                text-align: center;
-            }
-
-            [data-slide="8"] .status-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-                margin: 40px 0;
-            }
-
-            [data-slide="8"] .status-card {
-                background: rgba(20, 30, 50, 0.6);
-                -webkit-backdrop-filter: blur(80px) saturate(180%);
-                backdrop-filter: blur(80px) saturate(180%);
-                padding: 30px;
-                border-radius: 12px;
-                border: 1px solid rgba(74, 144, 226, 0.3);
+                border: 1px solid rgba(74, 144, 226, 0.2);
                 text-align: center;
                 transition: all 0.3s ease;
             }
 
-            [data-slide="8"] .status-card:hover {
+            .team-member:hover {
                 background: rgba(74, 144, 226, 0.25);
-                -webkit-backdrop-filter: blur(25px) saturate(180%);
-                backdrop-filter: blur(25px) saturate(180%);
-                border-color: #4a90e2;
                 transform: translateY(-5px);
             }
 
-            [data-slide="8"] .status-card .icon {
-                width: 48px;
-                height: 48px;
-                margin: 0 auto 15px;
-                display: block;
-            }
-
-            [data-slide="8"] .status-card h3 {
-                font-size: 1.3rem;
-                margin-bottom: 10px;
+            .team-member h3 {
                 color: #4a90e2;
+                margin-bottom: 10px;
             }
 
-            [data-slide="8"] .status-card p {
-                font-size: 0.95rem;
-                margin: 0;
+            .team-member p {
                 color: rgba(255, 255, 255, 0.8);
+                font-size: 1.1rem;
+                margin: 0;
             }
 
-            [data-slide="8"] .status-highlights {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                margin: 40px 0 30px;
+            .timeline {
+                margin: 40px 0;
+                position: relative;
+                padding-left: 0;
             }
 
-            [data-slide="8"] .highlight-box {
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: rgba(74, 144, 226, 0.3);
+            }
+
+            .timeline-item {
+                margin: 0 0 30px 0;
+                padding-left: 40px;
+                position: relative;
+            }
+
+            .timeline-item::before {
+                content: "";
+                position: absolute;
+                left: -5px;
+                top: 5px;
+                width: 12px;
+                height: 12px;
+                background: #4a90e2;
+                border-radius: 50%;
+                border: 2px solid #0a0e1a;
+            }
+
+            .timeline-item h3 {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+
+            .timeline-item p {
+                font-size: 1.05rem;
+            }
+
+            .highlight-box {
                 background: rgba(20, 30, 50, 0.6);
-                -webkit-backdrop-filter: blur(80px) saturate(180%);
                 backdrop-filter: blur(80px) saturate(180%);
                 padding: 25px 30px;
                 border-radius: 10px;
                 border-left: 4px solid #4a90e2;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                transition: all 0.3s ease;
+                margin: 20px 0;
             }
 
-            [data-slide="8"] .highlight-box:hover {
-                background: rgba(74, 144, 226, 0.25);
-                -webkit-backdrop-filter: blur(25px) saturate(180%);
-                backdrop-filter: blur(25px) saturate(180%);
+            .tam-sam-som {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                margin: 50px 0;
             }
 
-            [data-slide="8"] .highlight-box .icon {
-                width: 32px;
-                height: 32px;
-                flex-shrink: 0;
+            .tam-sam-som .stat {
+                padding: 35px;
             }
 
-            [data-slide="8"] .highlight-box p {
-                margin: 0;
-                font-size: 1.1rem;
+            .tam-sam-som .stat-label {
+                font-size: 1rem;
+                margin-bottom: 10px;
             }
 
-            /* Animations */
+            .competitor-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                margin: 40px 0;
+            }
+
+            .competitor-card {
+                background: rgba(20, 30, 50, 0.6);
+                backdrop-filter: blur(80px) saturate(180%);
+                padding: 25px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 100, 100, 0.3);
+                text-align: center;
+            }
+
+            .competitor-card h3 {
+                color: #ff6b6b;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            .competitor-card p {
+                font-size: 0.95rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -656,23 +454,6 @@
                 animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             }
 
-            /* Center alignment helper */
-            .text-center {
-                text-align: center;
-            }
-
-            /* Instructions */
-            .instructions {
-                position: fixed;
-                bottom: 30px;
-                right: 40px;
-                z-index: 100;
-                font-size: 0.85rem;
-                color: #576574;
-                text-align: right;
-            }
-
-            /* Responsive */
             @media (max-width: 768px) {
                 h1 {
                     font-size: 3rem;
@@ -683,225 +464,84 @@
                 .slide-content {
                     padding: 40px;
                 }
-                .grid {
+                .grid,
+                .grid-3,
+                .team-grid,
+                .tam-sam-som,
+                .competitor-grid {
                     grid-template-columns: 1fr;
-                }
-                .big-number {
-                    font-size: 5rem;
-                }
-                .stat-number {
-                    font-size: 3rem;
                 }
             }
         </style>
     </head>
     <body>
         <div class="presentation">
-            <!-- Logo -->
             <div class="logo">MuraAI</div>
-
-            <!-- Slide Counter -->
             <div class="slide-counter">
                 <span class="current-slide">1</span> /
-                <span class="total-slides">10</span>
+                <span class="total-slides">13</span>
             </div>
-
-            <!-- Instructions -->
             <div class="instructions">← → для навигации</div>
 
-            <!-- Slide 1: Title -->
+            <!-- Slide 1: Титул -->
             <div class="slide active with-video" data-slide="1">
                 <div class="slide-content text-center">
                     <h1>MuraAI</h1>
-                    <p class="subtitle">Цифровое Наследие Казахстана</p>
-                    <p
-                        style="
-                            font-size: 1.4rem;
-                            color: #4a90e2;
-                            margin-top: 50px;
-                        "
-                    >
-                        Искусственный интеллект для сохранения<br />культурного
-                        наследия
+                    <p class="subtitle">
+                        AI-Платформа для цифровизации<br />культурного наследия
+                        Казахстана
+                    </p>
+                    <p style="font-size: 1.4rem; color: #fff; margin-top: 60px">
+                        Хакатон 2025
                     </p>
                 </div>
             </div>
 
-            <!-- Slide 2: Problem -->
-            <div class="slide with-video" data-slide="2">
+            <!-- Slide 2: Команда -->
+            <div class="slide" data-slide="2">
                 <div class="slide-content">
-                    <h2>Проблема</h2>
-                    <div class="big-number">90%</div>
-                    <p
-                        class="text-center"
-                        style="
-                            font-size: 1.4rem;
-                            margin-bottom: 30px;
-                            color: #8395a7;
-                        "
-                    >
-                        носителей традиций старше 60 лет
-                    </p>
-                    <ul class="feature-list">
-                        <li>
-                            <i data-lucide="users" class="icon"></i> Последнее
-                            поколение носителей традиций уходит
-                        </li>
-                        <li>
-                            <i data-lucide="book-open" class="icon"></i> Нет
-                            систематизации знаний о ремеслах и обрядах
-                        </li>
-                        <li>
-                            <i data-lucide="landmark" class="icon"></i> Музеи
-                            перегружены, не успевают каталогизировать
-                        </li>
-                        <li>
-                            <i data-lucide="globe" class="icon"></i> Молодежь
-                            теряет связь с корнями
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Slide 3: Solution -->
-            <div class="slide" data-slide="3">
-                <div class="slide-content">
-                    <h2>Решение</h2>
-                    <p class="subtitle">AI-платформа для сохранения культуры</p>
-
-                    <div class="grid">
-                        <div class="grid-item">
-                            <h3>
-                                <i data-lucide="cpu" class="icon"></i>
-                                AI-Обработка
-                            </h3>
-                            <p>Автоматический анализ с Claude AI</p>
+                    <h2>Команда</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <h3>Разработчик</h3>
+                            <p>Fullstack разработка<br />AI интеграция</p>
                         </div>
-                        <div class="grid-item">
-                            <h3>
-                                <i data-lucide="file-text" class="icon"></i>
-                                Структурирование
-                            </h3>
-                            <p>Извлечение и классификация данных</p>
-                        </div>
-                        <div class="grid-item">
-                            <h3>
-                                <i data-lucide="search" class="icon"></i> Поиск
-                            </h3>
-                            <p>Мгновенный доступ к базе знаний</p>
-                        </div>
-                        <div class="grid-item">
-                            <h3>
-                                <i data-lucide="globe" class="icon"></i>
-                                Доступность
-                            </h3>
-                            <p>Открыт для всех участников</p>
+                        <div class="team-member">
+                            <h3>Аналитик</h3>
+                            <p>Исследование рынка<br />Стратегия</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Slide 4: How It Works -->
-            <div class="slide with-video" data-slide="4">
-                <div class="slide-content">
-                    <h2>Как Это Работает</h2>
-
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h3>Загрузка</h3>
-                            <p>Фото, видео или аудио элемента наследия</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h3>AI-Анализ</h3>
-                            <p>Claude AI распознает объекты и техники</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h3>Извлечение Данных</h3>
-                            <p>Регион, период, материалы, символика</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h3>Структурирование</h3>
-                            <p>Сохранение в базе с тегами</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h3>Доступ</h3>
-                            <p>Открытый поиск и использование</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 5: Demo -->
-            <div class="slide" data-slide="5">
-                <div class="slide-content">
-                    <h2>Результат</h2>
-
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">48</span>
-                            <span class="stat-label">Часов</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">8</span>
-                            <span class="stat-label">Элементов</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Работает</span>
-                        </div>
-                    </div>
-
-                    <div class="results-grid">
-                        <div class="result-card">
-                            <i data-lucide="check-circle" class="icon"></i>
-                            <p>Полнофункциональная платформа</p>
-                        </div>
-                        <div class="result-card">
-                            <i data-lucide="cpu" class="icon"></i>
-                            <p>Реальный AI-анализ</p>
-                        </div>
-                        <div class="result-card">
-                            <i data-lucide="database" class="icon"></i>
-                            <p>8 элементов наследия</p>
-                        </div>
-                        <div class="result-card">
-                            <i data-lucide="search" class="icon"></i>
-                            <p>Поиск и фильтрация</p>
-                        </div>
-                        <div class="result-card">
-                            <i data-lucide="globe" class="icon"></i>
-                            <p>Онлайн и доступно</p>
-                        </div>
-                        <div class="result-card">
-                            <i data-lucide="zap" class="icon"></i>
-                            <p>Быстрая обработка</p>
-                        </div>
-                    </div>
-
-                    <div class="cta-container">
-                        <a
-                            href="https://muraai.xrer.space"
-                            class="cta-button"
-                            target="_blank"
+                    <div class="highlight-box">
+                        <p
+                            style="
+                                text-align: center;
+                                font-size: 1.3rem;
+                                margin: 0;
+                            "
                         >
-                            Попробовать
-                        </a>
+                            <i data-lucide="zap" class="icon"></i>
+                            48 часов разработки • Полный MVP • Готовы к
+                            масштабированию
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 6: Impact -->
-            <div class="slide with-video" data-slide="6">
+            <!-- Slide 3: Целевая аудитория -->
+            <div class="slide with-video" data-slide="3">
                 <div class="slide-content">
-                    <h2>Кому Это Нужно</h2>
-
+                    <h2>Целевая Аудитория</h2>
                     <div class="grid">
                         <div class="grid-item">
                             <h3>
                                 <i data-lucide="landmark" class="icon"></i>
-                                Музеи
+                                Музеи и дома культуры
                             </h3>
-                            <p>200+ по Казахстану</p>
+                            <p>
+                                <strong>200+</strong> учреждений по
+                                Казахстану<br />
+                                Проблема: ручная каталогизация занимает месяцы
+                            </p>
                         </div>
                         <div class="grid-item">
                             <h3>
@@ -909,212 +549,526 @@
                                     data-lucide="graduation-cap"
                                     class="icon"
                                 ></i>
-                                Образование
+                                Образовательные учреждения
                             </h3>
-                            <p>7000+ школ</p>
+                            <p>
+                                <strong>7000+</strong> школ и вузов<br />
+                                Нужны: материалы о культуре для уроков
+                            </p>
                         </div>
                         <div class="grid-item">
                             <h3>
                                 <i data-lucide="microscope" class="icon"></i>
                                 Исследователи
                             </h3>
-                            <p>База для работы</p>
+                            <p>
+                                Этнографы, культурологи, лингвисты<br />
+                                Нужна: структурированная база данных
+                            </p>
                         </div>
                         <div class="grid-item">
                             <h3>
-                                <i data-lucide="plane" class="icon"></i> Туризм
+                                <i data-lucide="users" class="icon"></i> Широкая
+                                аудитория
                             </h3>
-                            <p>Аутентичная культура</p>
+                            <p>
+                                Казахстанцы, туристы<br />
+                                Интерес: доступ к культурному наследию
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Проблема -->
+            <div class="slide with-video" data-slide="4">
+                <div class="slide-content">
+                    <h2>Проблема</h2>
+                    <div class="big-number">90%</div>
+                    <p
+                        class="text-center"
+                        style="
+                            font-size: 1.4rem;
+                            color: #8395a7;
+                            margin-bottom: 40px;
+                        "
+                    >
+                        носителей традиций старше 60 лет
+                    </p>
+                    <ul class="feature-list">
+                        <li>
+                            <i data-lucide="alert-triangle" class="icon"></i>
+                            <strong>Утрата знаний:</strong> Последнее поколение
+                            мастеров уходит, не передав знания
+                        </li>
+                        <li>
+                            <i data-lucide="clock" class="icon"></i>
+                            <strong>Медленная каталогизация:</strong> Музеи
+                            тратят недели на описание одного экспоната
+                        </li>
+                        <li>
+                            <i data-lucide="database" class="icon"></i>
+                            <strong>Нет систематизации:</strong> Информация
+                            разрозненна, нет единой базы
+                        </li>
+                        <li>
+                            <i data-lucide="x-circle" class="icon"></i>
+                            <strong>Недоступность:</strong> Молодежь не имеет
+                            доступа к культурному наследию
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 5: Конкуренты -->
+            <div class="slide" data-slide="5">
+                <div class="slide-content">
+                    <h2>Конкуренты</h2>
+                    <div class="competitor-grid">
+                        <div class="competitor-card">
+                            <h3>Традиционные каталоги</h3>
+                            <p>
+                                ❌ Ручная работа<br />❌ Месяцы на обработку<br />❌
+                                Дорого
+                            </p>
+                        </div>
+                        <div class="competitor-card">
+                            <h3>Google Arts & Culture</h3>
+                            <p>
+                                ❌ Только крупные музеи<br />❌ Нет казахского
+                                контента<br />❌ Нет AI-анализа
+                            </p>
+                        </div>
+                        <div class="competitor-card">
+                            <h3>Локальные базы</h3>
+                            <p>
+                                ❌ Не масштабируются<br />❌ Закрытый доступ<br />❌
+                                Устаревшие
+                            </p>
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 40px">
+                        <p
+                            style="
+                                text-align: center;
+                                font-size: 1.3rem;
+                                margin: 0;
+                            "
+                        >
+                            <i data-lucide="trophy" class="icon"></i>
+                            <strong>Наше преимущество:</strong> AI-автоматизация
+                            + открытая платформа + фокус на Казахстан
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Решение -->
+            <div class="slide with-video" data-slide="6">
+                <div class="slide-content">
+                    <h2>Решение</h2>
+                    <p class="subtitle">
+                        AI-платформа для мгновенной каталогизации
+                    </p>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="upload" class="icon"></i>
+                                Загрузка
+                            </h3>
+                            <p>Фото, видео, аудио, текст</p>
                         </div>
                         <div class="grid-item">
                             <h3>
-                                <i data-lucide="users" class="icon"></i> Каждый
+                                <i data-lucide="cpu" class="icon"></i> AI-Анализ
                             </h3>
-                            <p>Доступ к корням</p>
+                            <p>Gemini AI за минуты</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="database" class="icon"></i>
+                                Структурирование
+                            </h3>
+                            <p>Регион, период, техника, символика</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="search" class="icon"></i> Доступ
+                            </h3>
+                            <p>Мгновенный поиск для всех</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 30px">
+                        <p
+                            style="
+                                font-size: 1.2rem;
+                                text-align: center;
+                                margin: 0;
+                            "
+                        >
+                            <strong>Результат:</strong> Недели работы → Минуты
+                            автоматизации
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Метрики -->
+            <div class="slide" data-slide="7">
+                <div class="slide-content">
+                    <h2>Метрики и Гипотезы</h2>
+
+                    <h3 style="margin-top: 30px; margin-bottom: 20px">
+                        Текущие результаты (48 часов):
+                    </h3>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Элемента готово</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">В процессе</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">2 мин</span>
+                            <span class="stat-label">Время анализа</span>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 40px; margin-bottom: 20px">
+                        Гипотезы на 3 месяца:
+                    </h3>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>100+ элементов</h3>
+                            <p>При работе с 5 музеями</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>95% экономии времени</h3>
+                            <p>vs ручная каталогизация</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>1000+ пользователей</h3>
+                            <p>Органический рост + партнеры</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>$5-10K MRR</h3>
+                            <p>От образовательных лицензий</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Pilots -->
+            <div class="slide with-video" data-slide="8">
+                <div class="slide-content">
+                    <h2>Пилотные Проекты</h2>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="building" class="icon"></i>
+                                Национальный музей РК
+                            </h3>
+                            <p>
+                                <strong>Цель:</strong> Каталогизация 50
+                                экспонатов<br />
+                                <strong>Срок:</strong> 1 месяц<br />
+                                <strong>Статус:</strong> Переговоры
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="home" class="icon"></i> Дома
+                                культуры Алматы
+                            </h3>
+                            <p>
+                                <strong>Цель:</strong> База ремесел региона<br />
+                                <strong>Срок:</strong> 2 месяца<br />
+                                <strong>Статус:</strong> Планирование
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="book-open" class="icon"></i>
+                                КазНУ им. Аль-Фараби
+                            </h3>
+                            <p>
+                                <strong>Цель:</strong> Образовательный модуль<br />
+                                <strong>Срок:</strong> Семестр<br />
+                                <strong>Статус:</strong> Обсуждение
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="globe" class="icon"></i>
+                                Онлайн-сообщество
+                            </h3>
+                            <p>
+                                <strong>Цель:</strong> Краудсорсинг контента<br />
+                                <strong>Срок:</strong> Постоянно<br />
+                                <strong>Статус:</strong> Запущено
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Stakeholders -->
+            <div class="slide" data-slide="9">
+                <div class="slide-content">
+                    <h2>Стейкхолдеры</h2>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="building-2" class="icon"></i>
+                                Министерство культуры РК
+                            </h3>
+                            <p>
+                                Заинтересованность в цифровизации наследия<br />
+                                Потенциал госконтрактов
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="university" class="icon"></i>
+                                Вузы и НИИ
+                            </h3>
+                            <p>
+                                База для исследований<br />
+                                Образовательные программы
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="landmark" class="icon"></i>
+                                Музеи РК
+                            </h3>
+                            <p>
+                                Автоматизация каталогизации<br />
+                                Экономия ресурсов
+                            </p>
                         </div>
                         <div class="grid-item">
                             <h3>
                                 <i data-lucide="award" class="icon"></i> ЮНЕСКО
                             </h3>
-                            <p>Мировое наследие</p>
+                            <p>
+                                Сохранение мирового наследия<br />
+                                Международное признание
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="plane" class="icon"></i>
+                                Туристический сектор
+                            </h3>
+                            <p>
+                                Контент для туристов<br />
+                                Промо казахской культуры
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="sparkles" class="icon"></i>
+                                Tech-сообщество
+                            </h3>
+                            <p>
+                                Open source разработка<br />
+                                API для интеграций
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 7: Roadmap -->
-            <div class="slide" data-slide="7">
+            <!-- Slide 10: Рынок (TAM SAM SOM) -->
+            <div class="slide with-video" data-slide="10">
                 <div class="slide-content">
-                    <h2>Развитие</h2>
+                    <h2>Рынок</h2>
+                    <div class="tam-sam-som">
+                        <div class="stat">
+                            <span class="stat-label">TAM (Общий рынок)</span>
+                            <span class="stat-number">$50M</span>
+                            <p style="font-size: 0.95rem; margin-top: 15px">
+                                Все музеи и культурные учреждения Центральной
+                                Азии
+                            </p>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label"
+                                >SAM (Доступный рынок)</span
+                            >
+                            <span class="stat-number">$8M</span>
+                            <p style="font-size: 0.95rem; margin-top: 15px">
+                                Казахстан: музеи + образование + туризм
+                            </p>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">SOM (Целевой рынок)</span>
+                            <span class="stat-number">$1.2M</span>
+                            <p style="font-size: 0.95rem; margin-top: 15px">
+                                Первый год: 50 музеев + 200 школ + туроператоры
+                            </p>
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 40px">
+                        <p
+                            style="
+                                font-size: 1.2rem;
+                                text-align: center;
+                                margin: 0;
+                            "
+                        >
+                            <strong>Стратегия:</strong> Старт в Казахстане →
+                            Масштабирование на ЦА → Выход на мировой рынок
+                        </p>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Slide 11: Маркетинг -->
+            <div class="slide" data-slide="11">
+                <div class="slide-content">
+                    <h2>Маркетинг и Продвижение</h2>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="handshake" class="icon"></i> B2G
+                                (Business to Government)
+                            </h3>
+                            <p>
+                                • Прямые переговоры с Минкультуры<br />
+                                • Участие в тендерах<br />
+                                • Пилоты с госмузеями
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="building" class="icon"></i> B2B
+                            </h3>
+                            <p>
+                                • Демо для музеев и вузов<br />
+                                • Конференции и выставки<br />
+                                • Партнерская программа
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="users" class="icon"></i> B2C
+                            </h3>
+                            <p>
+                                • Соцсети (Instagram, TikTok)<br />
+                                • Контент-маркетинг<br />
+                                • Краудсорсинг сообщества
+                            </p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>
+                                <i data-lucide="newspaper" class="icon"></i> PR
+                            </h3>
+                            <p>
+                                • Статьи в СМИ о сохранении культуры<br />
+                                • Кейсы с пилотами<br />
+                                • Awards и хакатоны
+                            </p>
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 30px">
+                        <p style="font-size: 1.1rem; margin: 0">
+                            <strong>Канал №1:</strong> Прямые продажи в музеи
+                            через демонстрацию ROI (95% экономии времени)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Дорожная карта -->
+            <div class="slide with-video" data-slide="12">
+                <div class="slide-content">
+                    <h2>Дорожная Карта</h2>
                     <div class="timeline">
                         <div class="timeline-item">
                             <h3>
-                                <i data-lucide="smartphone" class="icon"></i> 3
-                                месяца
+                                <i data-lucide="rocket" class="icon"></i> Месяц
+                                1-3: MVP → Product
                             </h3>
                             <p>
-                                Мобильное приложение • Интеграция с музеями •
-                                Образовательные модули
+                                • Завершить 8 элементов демо<br />
+                                • Мобильное приложение<br />
+                                • Запустить 2 пилота<br />
+                                • 100+ элементов в базе
                             </p>
                         </div>
                         <div class="timeline-item">
                             <h3>
-                                <i data-lucide="globe" class="icon"></i> 6-12
-                                месяцев
+                                <i data-lucide="trending-up" class="icon"></i>
+                                Месяц 4-6: Рост
                             </h3>
                             <p>
-                                Центральная Азия • API для исследователей •
-                                Партнерство с ЮНЕСКО
+                                • 5 платных музеев-клиентов<br />
+                                • Образовательные лицензии<br />
+                                • Jupyter для исследователей<br />
+                                • 500+ элементов
                             </p>
                         </div>
                         <div class="timeline-item">
                             <h3>
-                                <i data-lucide="coins" class="icon"></i>
-                                Финансирование
+                                <i data-lucide="globe" class="icon"></i> Месяц
+                                7-12: Масштабирование
                             </h3>
                             <p>
-                                Гранты • Господдержка • Образовательные лицензии
+                                • Выход в другие страны ЦА<br />
+                                • API для разработчиков<br />
+                                • Партнерство с ЮНЕСКО<br />
+                                • 2000+ элементов
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>
+                                <i data-lucide="trophy" class="icon"></i> Год 2:
+                                Лидерство
+                            </h3>
+                            <p>
+                                • #1 платформа в регионе<br />
+                                • 50+ институциональных клиентов<br />
+                                • 10,000+ элементов<br />
+                                • Международное признание
                             </p>
                         </div>
                     </div>
-
-                    <p
-                        class="text-center"
-                        style="margin-top: 50px; font-size: 1.3rem; color: #fff"
-                    >
-                        Модель применима для любых народов
-                    </p>
                 </div>
             </div>
 
-            <!-- Slide 8: Status -->
-            <div class="slide with-video" data-slide="8">
-                <div class="slide-content">
-                    <h2>Статус Проекта</h2>
-
-                    <div class="status-grid">
-                        <div class="status-card">
-                            <i data-lucide="check-circle" class="icon"></i>
-                            <h3>MVP Готов</h3>
-                            <p>За 48 часов хакатона</p>
-                        </div>
-                        <div class="status-card">
-                            <i data-lucide="cpu" class="icon"></i>
-                            <h3>AI Работает</h3>
-                            <p>Полный анализ контента</p>
-                        </div>
-                        <div class="status-card">
-                            <i data-lucide="globe" class="icon"></i>
-                            <h3>Online</h3>
-                            <p>Доступно прямо сейчас</p>
-                        </div>
-                        <div class="status-card">
-                            <i data-lucide="database" class="icon"></i>
-                            <h3>8 Элементов</h3>
-                            <p>Наследие загружено</p>
-                        </div>
-                        <div class="status-card">
-                            <i data-lucide="layout-grid" class="icon"></i>
-                            <h3>Платформа</h3>
-                            <p>Веб-интерфейс готов</p>
-                        </div>
-                        <div class="status-card">
-                            <i data-lucide="search" class="icon"></i>
-                            <h3>Поиск</h3>
-                            <p>Быстрый и точный</p>
-                        </div>
-                    </div>
-
-                    <div class="status-highlights">
-                        <div class="highlight-box">
-                            <i data-lucide="rocket" class="icon"></i>
-                            <p>Готовы к pilot-программе</p>
-                        </div>
-                        <div class="highlight-box">
-                            <i data-lucide="handshake" class="icon"></i>
-                            <p>Открыты для партнерств</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9: CTA -->
-            <div class="slide with-video" data-slide="9">
-                <div class="slide-content text-center">
-                    <h2
-                        style="
-                            font-size: 3rem;
-                            margin-bottom: 60px;
-                            line-height: 1.4;
-                        "
-                    >
-                        Каждый День Мы Теряем<br />Частичку Нашей Культуры
-                    </h2>
-
-                    <p style="font-size: 1.8rem; color: #fff; margin: 60px 0">
-                        MuraAI превращает угрозу в возможность<br />цифрового
-                        бессмертия
-                    </p>
-
-                    <h3
-                        style="
-                            font-size: 2rem;
-                            margin: 60px 0;
-                            color: #fff;
-                            font-weight: 400;
-                        "
-                    >
-                        Давайте сохраним наследие<br />для будущих поколений
-                        вместе!
-                    </h3>
-
-                    <div class="cta-container">
-                        <a
-                            href="https://muraai.xrer.space"
-                            class="cta-button"
-                            target="_blank"
-                        >
-                            muraai.xrer.space
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 10: Contacts -->
-            <div class="slide" data-slide="10">
+            <!-- Slide 13: Контакты -->
+            <div class="slide" data-slide="13">
                 <div class="slide-content text-center">
                     <h2>Контакты</h2>
-
                     <div style="margin: 80px 0">
-                        <p style="font-size: 1.4rem; margin: 25px 0">
+                        <p style="font-size: 1.5rem; margin: 30px 0">
                             <i data-lucide="globe" class="icon"></i>
-                            muraai.xrer.space
+                            <strong>muraai.xrer.space</strong>
                         </p>
-                        <p style="font-size: 1.4rem; margin: 25px 0">
-                            <i data-lucide="github" class="icon"></i>
-                            github.com/yourname/muraai
-                        </p>
-                        <p style="font-size: 1.4rem; margin: 25px 0">
+                        <p style="font-size: 1.5rem; margin: 30px 0">
                             <i data-lucide="mail" class="icon"></i>
                             dev.xrer@icloud.com
                         </p>
-                        <p style="font-size: 1.4rem; margin: 25px 0">
+                        <p style="font-size: 1.5rem; margin: 30px 0">
                             <i data-lucide="message-circle" class="icon"></i>
                             @ImXrer
                         </p>
                     </div>
-
-                    <h3
-                        style="
-                            font-size: 2rem;
-                            margin-top: 80px;
-                            color: #4a90e2;
-                            font-weight: 500;
-                        "
+                    <div
+                        class="highlight-box"
+                        style="max-width: 700px; margin: 60px auto 0"
                     >
-                        Спасибо за внимание
-                    </h3>
+                        <p style="font-size: 1.4rem; margin: 0; color: #4a90e2">
+                            <strong
+                                >Давайте сохраним культурное наследие
+                                вместе!</strong
+                            >
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -1130,12 +1084,15 @@
                 <div class="nav-dot" data-slide="8"></div>
                 <div class="nav-dot" data-slide="9"></div>
                 <div class="nav-dot" data-slide="10"></div>
+                <div class="nav-dot" data-slide="11"></div>
+                <div class="nav-dot" data-slide="12"></div>
+                <div class="nav-dot" data-slide="13"></div>
             </div>
 
-            <!-- Shared Video Background -->
+            <!-- Video Background -->
             <div class="video-background">
                 <video autoplay muted loop playsinline>
-                    <source src="./glass-animation.mp4" type="video/mp4" />
+                    <source src="glass-animation.mp4" type="video/mp4" />
                 </video>
                 <div class="video-overlay"></div>
             </div>
@@ -1143,7 +1100,7 @@
 
         <script>
             let currentSlide = 1;
-            const totalSlides = 10;
+            const totalSlides = 13;
             const slides = document.querySelectorAll(".slide");
             const navDots = document.querySelectorAll(".nav-dot");
             const video = document.querySelector(".video-background video");
@@ -1179,7 +1136,6 @@
                 updateSlideCounter();
                 updateVideoVisibility();
 
-                // Reinitialize icons for the new slide
                 setTimeout(() => lucide.createIcons(), 50);
             }
 
@@ -1191,7 +1147,6 @@
                 goToSlide(currentSlide - 1);
             }
 
-            // Keyboard navigation
             document.addEventListener("keydown", (e) => {
                 if (e.key === "ArrowRight" || e.key === " ") {
                     e.preventDefault();
@@ -1202,14 +1157,12 @@
                 }
             });
 
-            // Click navigation
             navDots.forEach((dot, index) => {
                 dot.addEventListener("click", () => {
                     goToSlide(index + 1);
                 });
             });
 
-            // Touch swipe
             let touchStartX = 0;
             let touchEndX = 0;
 
@@ -1223,12 +1176,8 @@
                 if (touchEndX > touchStartX + 50) prevSlide();
             });
 
-            // Click to advance
             document.addEventListener("click", (e) => {
-                if (
-                    !e.target.closest(".nav-dot") &&
-                    !e.target.closest(".cta-button")
-                ) {
+                if (!e.target.closest(".nav-dot")) {
                     if (e.clientX > window.innerWidth / 2) {
                         nextSlide();
                     } else {
@@ -1237,10 +1186,7 @@
                 }
             });
 
-            // Initialize video visibility
             updateVideoVisibility();
-
-            // Initialize Lucide icons
             lucide.createIcons();
         </script>
     </body>
