@@ -320,28 +320,57 @@
 
             .team-member {
                 background: rgba(20, 30, 50, 0.6);
-                backdrop-filter: blur(80px) saturate(180%);
-                padding: 35px;
-                border-radius: 10px;
-                border: 1px solid rgba(74, 144, 226, 0.2);
+                backdrop-filter: blur(60px) saturate(180%);
+                padding: 25px;
+                border-radius: 14px;
+                border: 1px solid rgba(74, 144, 226, 0.25);
                 text-align: center;
                 transition: all 0.3s ease;
+                position: relative;
             }
 
             .team-member:hover {
+                transform: translateY(-6px);
                 background: rgba(74, 144, 226, 0.25);
-                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);
             }
 
             .team-member h3 {
                 color: #4a90e2;
-                margin-bottom: 10px;
+                margin: 15px 0 8px;
+                font-size: 1.3rem;
             }
 
             .team-member p {
-                color: rgba(255, 255, 255, 0.8);
-                font-size: 1.1rem;
-                margin: 0;
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid #4a90e2;
+                margin-bottom: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .team-member:hover .avatar {
+                transform: scale(1.05);
+            }
+
+            @media (max-width: 900px) {
+                .team-grid {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .team-grid {
+                    grid-template-columns: 1fr !important;
+                }
             }
 
             .timeline {
@@ -499,27 +528,55 @@
 
             <!-- Slide 2: Команда -->
             <div class="slide" data-slide="2">
-                <div class="slide-content">
-                    <h2>Команда</h2>
-                    <div class="team-grid">
+                <div class="slide-content text-center">
+                    <h2>Команда MuraAI</h2>
+                    <p class="subtitle">
+                        Хакатон AlatauHub 2025 — 48 часов, одна цель
+                    </p>
+
+                    <div
+                        class="team-grid"
+                        style="grid-template-columns: repeat(4, 1fr); gap: 40px"
+                    >
                         <div class="team-member">
-                            <h3>Разработчик (Ф.Фатихов)</h3>
+                            <img
+                                src="avatars/farid.jpeg"
+                                alt="Ф.Фатихов"
+                                class="avatar"
+                            />
+                            <h3>Ф.Фатихов</h3>
                             <p>Fullstack разработка<br />AI интеграция</p>
                         </div>
                         <div class="team-member">
-                            <h3>Аналитик (Р.Траксель)</h3>
-                            <p>Исследование рынка<br />Стратегия</p>
+                            <img
+                                src="avatars/roma.jpeg"
+                                alt="Р.Траксель"
+                                class="avatar"
+                            />
+                            <h3>Р.Траксель</h3>
+                            <p>Аналитика рынка<br />Бизнес-стратегия</p>
                         </div>
                         <div class="team-member">
-                            <h3>Ресерчер (М.Максимов)</h3>
-                            <p>Поиск легенд<br />Элементов</p>
+                            <img
+                                src="avatars/maxim.jpeg"
+                                alt="М.Максимов"
+                                class="avatar"
+                            />
+                            <h3>М.Максимов</h3>
+                            <p>Ресерч легенд<br />Культурные элементы</p>
                         </div>
                         <div class="team-member">
-                            <h3>CyberSecurity/Pintext (И.Сиволапов)</h3>
-                            <p>Проверка стабильности<br />Серверов</p>
+                            <img
+                                src="avatars/ilya.jpeg"
+                                alt="И.Сиволапов"
+                                class="avatar"
+                            />
+                            <h3>И.Сиволапов</h3>
+                            <p>Кибербезопасность<br />Pintext & тесты</p>
                         </div>
                     </div>
-                    <div class="highlight-box">
+
+                    <div class="highlight-box" style="margin-top: 50px">
                         <p
                             style="
                                 text-align: center;
@@ -528,7 +585,7 @@
                             "
                         >
                             <i data-lucide="zap" class="icon"></i>
-                            48 часов разработки • Полный MVP • Готовы к
+                            48 часов разработки • Полный MVP • Команда готова к
                             масштабированию
                         </p>
                     </div>
